@@ -37,8 +37,9 @@ function nakovn_filename_hash($filename) {
 	$name = pathinfo($filename, PATHINFO_FILENAME);
 	
     $name = slugify($name);
-    $name = str_replace('ngolongnd_', '', $name);
-    return 'ngolongnd_' . $name . '.' . $ext;
+    $first_name = 'ngolongnd_';
+    $name = str_replace($first_name, '', $name);
+    return $first_name . $name . '.' . $ext;
 }
 add_filter('sanitize_file_name', 'nakovn_filename_hash', 10);
 
